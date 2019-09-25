@@ -1,0 +1,24 @@
+apiVersion: v1
+kind: ReplicaSet
+metadata: 
+  name: myapp-replicaset
+  labels:
+    app: myrsapp
+    type: front-end
+
+spec:
+  template:
+    metadata:
+      name: myrsapp-pod
+      labels:
+        app: myrsapp
+    spec:
+      containers:
+        name: nginx-container
+        image: nginx
+
+  replicas: 3
+
+  selector:
+    matchLabels:
+      app:myrsapp
